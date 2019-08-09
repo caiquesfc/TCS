@@ -1,54 +1,45 @@
 package ProjetoCarro;
 
-public class Veiculo {
+public class Veiculo implements InterfaceVeiculo {
 
-    private String modelo;
     private String cor;
+    private String modelo;
     boolean status;
-    private float precoCombustivel;
-    protected int nivelConbustivel;
+    private int qtdPneu;
+    private int combustivel;
+    private float gastoCombustivel;
+    private final int nivelCombustivelMax = 10;
+    int velMax;
 
-    void ligar() {
-        this.status = true;       
+    public void ligar() {
+        if (this.status == true) {
+            System.out.println("Carro já foi ligado!");
+        }else{
+            this.status = true;
+            System.out.println("Carro ligado!");
+        }
     }
 
-    void desligar() {
-        this.status = false;
-        System.out.println("Veiculo desligado!");
+    public void desligar() {
+        if (this.status == false) {
+            System.out.println("Carro já foi desligado!");
+        }else{
+            this.status = false;
+            System.out.println("Carro desligado!");
+        }
     }
 
-    void abastecer() {
-        this.status = true;
-        System.out.println("Veículo abastecido!");
+    public boolean verificComb() {
+        if (getCombustivel() == getCombustivelMax()) {
+            return true;
+        } else {
+            return false;
+        }
+    }    
+    public void acelerar() {
     }
 
-    void trocarPneu() {
-        this.status = true;
-        System.out.println("Pneu trocado!");
-    }
-
-    void acelerar() {
-        this.status = true;
-        System.out.println("Acelerando!");
-    }
-
-    public String getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
-    public String getCor() {
-        return cor;
-    }
-
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 
@@ -56,20 +47,38 @@ public class Veiculo {
         this.status = status;
     }
 
-    public float getPrecoCombustivel() {
-        return precoCombustivel;
+    public int getCombustivel() {
+        return combustivel;
     }
 
-    public void setPrecoCombustivel(float precoCombustivel) {
-        this.precoCombustivel = precoCombustivel;
+    public void setCombustivel(int combustivel) {
+        this.combustivel = combustivel;
     }
 
-    public int getNivelConbustivel() {
-        return nivelConbustivel;
+    public float getgastoCombustivel() {
+        return gastoCombustivel;
     }
 
-    public void setNivelConbustivel(int nivelConbustivel) {
-        this.nivelConbustivel = nivelConbustivel;
+    public void setgastoCombustivel(float gastoCombustivel) {
+        this.gastoCombustivel = gastoCombustivel;
     }
-    
+    public int getnivelCombustivelMax() {
+        return nivelCombustivelMax;
+    }
+
+    @Override
+    public void VerificComb() {
+
+    }
+
+    private int getCombustivelMax() {
+        return 0;
+
+    }
+
+    @Override
+    public void abastecer() {
+
+    }
+
 }
